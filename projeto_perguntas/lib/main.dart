@@ -4,22 +4,23 @@ void main() {
   runApp(PerguntaApp());
 }
 
-class PerguntaAppState extends State<PerguntaApp> {
-  var perguntaSelecionada = 0;
+class 
+_PerguntaAppState extends State<PerguntaApp> {
+  var _perguntaSelecionada = 0;
 
-  void responder(){
+  void _responder(){
     setState(() {
-      perguntaSelecionada ++;
-      if (perguntaSelecionada > 1) {
-        perguntaSelecionada = 0;
+      _perguntaSelecionada ++;
+      if (_perguntaSelecionada > 1) {
+        _perguntaSelecionada = 0;
       };
     });
-    print(perguntaSelecionada);
+    print(_perguntaSelecionada);
   }
 
-  void Function() resposta(String resposta){
+  void Function() _resposta(String resposta){
     return () {
-      responder();
+      _responder();
       print('A resposta está $resposta');
     };
   }
@@ -41,9 +42,9 @@ class PerguntaAppState extends State<PerguntaApp> {
         ),
         body: Column(
           children: <Widget>[
-            Text(perguntas[perguntaSelecionada]),
+            Text(perguntas[_perguntaSelecionada]),
             TextButton(
-              onPressed: resposta('CORRETA'), 
+              onPressed: _resposta('CORRETA'), 
               style: TextButton.styleFrom(
                 backgroundColor: Color.fromARGB(255, 0, 0, 255),
                 foregroundColor: Colors.white
@@ -51,7 +52,7 @@ class PerguntaAppState extends State<PerguntaApp> {
               child: Text('Azul')
               ),
             TextButton(
-              onPressed: resposta('INCORRETA'), 
+              onPressed: _resposta('INCORRETA'), 
               style: TextButton.styleFrom(
                 backgroundColor: Color.fromARGB(255, 255, 0, 0),
                 foregroundColor: Colors.white
@@ -59,7 +60,7 @@ class PerguntaAppState extends State<PerguntaApp> {
               child: Text('Vermelho')
               ),
             TextButton(
-              onPressed: resposta('INCORRETA'), 
+              onPressed: _resposta('INCORRETA'), 
               style: TextButton.styleFrom(
                 backgroundColor: Color.fromARGB(255, 0, 255, 0),
                 foregroundColor: Colors.white
@@ -77,8 +78,8 @@ class PerguntaApp extends StatefulWidget{
   const PerguntaApp({super.key});
   
   @override
-  State<StatefulWidget> createState() {
-    return PerguntaAppState();
+  _PerguntaAppState createState() {
+    return _PerguntaAppState();
   }
 
 }
